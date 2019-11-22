@@ -3,14 +3,12 @@ package dk.madslee.imageSequence;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.v4.content.ContextCompat;
 
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Nullable;
 
 import com.facebook.common.util.UriUtil;
-
 
 public class RCTResourceDrawableIdHelper {
 
@@ -28,24 +26,19 @@ public class RCTResourceDrawableIdHelper {
         if (mResourceDrawableIdMap.containsKey(name)) {
             return mResourceDrawableIdMap.get(name);
         }
-        int id = context.getResources().getIdentifier(
-                name,
-                "drawable",
-                context.getPackageName());
+        int id = context.getResources().getIdentifier(name, "drawable", context.getPackageName());
         mResourceDrawableIdMap.put(name, id);
         return id;
     }
 
     public @Nullable Drawable getResourceDrawable(Context context, @Nullable String name) {
         int resId = getResourceDrawableId(context, name);
-        return resId > 0 ? ContextCompat.getDrawable(context, resId) : null;
+        return resId > 0 ? context.getResources().getDrawable(resId) : null;
     }
 
     public Uri getResourceDrawableUri(Context context, @Nullable String name) {
         int resId = getResourceDrawableId(context, name);
-        return resId > 0 ? new Uri.Builder()
-                .scheme(UriUtil.LOCAL_RESOURCE_SCHEME)
-                .path(String.valueOf(resId))
-                .build() : Uri.EMPTY;
+        return resId > 0 ? new Uri.Builder().scheme(UriUtil.LOCAL_RESOURCE_SCHEME).path(String.valueOf(resId)).build()
+                : Uri.EMPTY;
     }
 }
