@@ -5,8 +5,8 @@ its a simple wrapper around **iOS** `UIImageView.animationImages` and **Android*
 
 ## Installation
 
-1. `npm i --save react-native-image-sequence`
-2. `react-native link react-native-image-sequence`
+1. `npm i --save @cbcnewmedia/react-native-image-sequence`
+2. `react-native link @cbcnewmedia/react-native-image-sequence`
 
 
 ## Examples
